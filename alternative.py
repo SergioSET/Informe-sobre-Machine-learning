@@ -66,29 +66,29 @@ tablaPaso4 = pd.DataFrame(
 print("Tabla de precisión de arboles punto 4")
 print(tablaPaso4, "\n")
 
-# Paso 6
-arbolesDecisionPaso6 = []
+# # Paso 6
+# arbolesDecisionPaso6 = []
 
-modeloPaso6 = DecisionTreeClassifier()
-for max_depth in hiperparametro:
-    modeloPaso6 = tree.DecisionTreeClassifier(
-        criterion="entropy", max_depth=max_depth, splitter="best", random_state=123
-    )
-    modeloPaso6.fit(X_train_processed, y_train_processed)
-    arbolesDecisionPaso6.append(modeloPaso6)
+# modeloPaso6 = DecisionTreeClassifier()
+# for max_depth in hiperparametro:
+#     modeloPaso6 = tree.DecisionTreeClassifier(
+#         criterion="entropy", max_depth=max_depth, splitter="best", random_state=123
+#     )
+#     modeloPaso6.fit(X_train_processed, y_train_processed)
+#     arbolesDecisionPaso6.append(modeloPaso6)
 
-valoresPrecisionPaso6 = []
-for max_depth, tree in zip(hiperparametro, arbolesDecisionPaso6):
-    precision = cross_val_score(
-        tree, X_train_processed, y_train_processed, cv=5, scoring="accuracy"
-    )
-    valoresPrecisionPaso6.append(precision.mean())
+# valoresPrecisionPaso6 = []
+# for max_depth, tree in zip(hiperparametro, arbolesDecisionPaso6):
+#     precision = cross_val_score(
+#         tree, X_train_processed, y_train_processed, cv=5, scoring="accuracy"
+#     )
+#     valoresPrecisionPaso6.append(precision.mean())
 
-tablaPaso6 = pd.DataFrame(
-    {"Profundidad máxima": hiperparametro, "Precisión": valoresPrecisionPaso6}
-)
-print("Tabla de precisión de arboles punto 6")
-print(tablaPaso6, "\n")
+# tablaPaso6 = pd.DataFrame(
+#     {"Profundidad máxima": hiperparametro, "Precisión": valoresPrecisionPaso6}
+# )
+# print("Tabla de precisión de arboles punto 6")
+# print(tablaPaso6, "\n")
 
 # # Paso 8
 # arbolesDecisionPaso8 = []
