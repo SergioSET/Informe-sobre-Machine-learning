@@ -9,10 +9,10 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 # Paso 1: Leer el archivo stroke.csv
 data = pd.read_csv('stroke.csv')
 
-# Paso 2: Dividir los datos en conjuntos de entrenamiento y pruebas
-X = data.drop('stroke', axis=1)  # Reemplaza 'target_variable' con el nombre real de la variable objetivo
-y = data['stroke']  # Reemplaza 'target_variable' con el nombre real de la variable objetivo
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Paso 2: Seleccionar aleatoriamente el 80% del conjunto de datos para entrenar y el 20% restante para las pruebas
+X = data.drop('stroke', axis=1)
+y = data['stroke']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) # 80% entrenamiento, 20% pruebas
 
 # Paso 3: Preprocesamiento de variables categóricas y numéricas
 categorical_features = ['gender']  # Reemplaza con las columnas categóricas presentes en tus datos
