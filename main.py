@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier
 
 # Paso 1: Leer el archivo stroke.csv
 data = pd.read_csv('stroke.csv')
@@ -66,3 +67,19 @@ for max_depth, tree in zip(hyperparameters, decision_trees_entropy):
 
 results_df_entropy = pd.DataFrame({'Max Depth': hyperparameters, 'Accuracy': accuracy_scores_entropy})
 print(results_df_entropy)
+
+# Paso 8: Configurar los hiperparámetros y obtener los árboles de decisión con criterion=entropy y splitter=random
+decision_trees_random = []
+for max_depth in hyperparameters:
+    classifier = HistGradientBoostingClassifier(max_depth=max_depth, random_state=123)
+    classifier.fit(X_train_processed, y_train)
+    decision_trees_random.append(classifier)
+
+# Paso 9: Calcular y mostrar la tabla con los resultados de accuracy para los árboles de decisión con criterion=entropy y splitter=random
+accuracy_scores_random = []
+for max_depth, tree in zip(hyperparameters, decision_trees_random):
+    accuracy = tree.score(X_test_processed, y_test)
+    accuracy_scores_random.append(accuracy)
+
+results_df_random = pd.DataFrame({'Max Depth': hyperparameters, 'Accuracy': accuracy_scores_random})
+print(results_df_random)
