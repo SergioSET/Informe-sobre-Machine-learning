@@ -69,6 +69,7 @@ print(tablaPaso4, "\n")
 # # Paso 6
 # arbolesDecisionPaso6 = []
 
+# modeloPaso6 = DecisionTreeClassifier()
 # for max_depth in hiperparametro:
 #     modeloPaso6 = tree.DecisionTreeClassifier(
 #         criterion="entropy", max_depth=max_depth, splitter="best", random_state=123
